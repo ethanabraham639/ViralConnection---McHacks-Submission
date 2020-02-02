@@ -1,0 +1,137 @@
+package McHacks.views;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
+
+public class USA_measles extends JFrame {
+
+	private JPanel contentPane;
+	public static USA_measles us_measles = new USA_measles();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					us_measles.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public USA_measles() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 734, 549);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(null);
+		setContentPane(contentPane);
+		
+		JLabel lblLogo = new JLabel(" ");
+		lblLogo.setForeground(Color.RED);
+		lblLogo.setBackground(Color.RED);
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		Image Logo = new ImageIcon(this.getClass().getResource("/logo_final.PNG")).getImage();
+		Image modifiedLogo = Logo.getScaledInstance(730, 100, java.awt.Image.SCALE_SMOOTH);
+		lblLogo.setIcon(new ImageIcon(modifiedLogo));
+		
+		JButton btnNewButton = new JButton("RETURN");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(Color.BLUE);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				USA.USA_page.setVisible(true);
+				us_measles.setVisible(false);
+			}
+		});
+		btnNewButton.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		
+		JLabel lblNewLabel = new JLabel("Measles");
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		
+		JLabel lblNewLabel_1 = new JLabel("Symptoms");
+		lblNewLabel_1.setFont(new Font("Century Gothic", Font.PLAIN, 23));
+		
+		JLabel lblPreventions = new JLabel("Preventions");
+		lblPreventions.setFont(new Font("Century Gothic", Font.PLAIN, 23));
+		
+		JTextArea txtrTheCoronaVirus = new JTextArea();
+		txtrTheCoronaVirus.setEditable(false);
+		txtrTheCoronaVirus.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		txtrTheCoronaVirus.setBackground(Color.WHITE);
+		txtrTheCoronaVirus.setText("- Hacking Cough\r\n- High Fever\r\n- Red Eyes");
+		
+		JTextArea txtrPracticingProperHygiene = new JTextArea();
+		txtrPracticingProperHygiene.setEditable(false);
+		txtrPracticingProperHygiene.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+		txtrPracticingProperHygiene.setText("Getting the Measles vaccinations\r\nwill prevent a majority of \r\npeople from contracting the \r\ndisease");
+		txtrPracticingProperHygiene.setBackground(Color.WHITE);
+		
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(84, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtrTheCoronaVirus, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE))
+					.addGap(84)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblPreventions, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtrPracticingProperHygiene, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+					.addGap(84))
+				.addComponent(lblLogo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(277)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(295, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(292)
+					.addComponent(lblNewLabel)
+					.addContainerGap(325, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblLogo, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(33)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblPreventions))
+					.addGap(26)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtrTheCoronaVirus, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtrPracticingProperHygiene, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addGap(28)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(40))
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+}
