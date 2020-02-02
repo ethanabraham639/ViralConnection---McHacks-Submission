@@ -1,0 +1,172 @@
+package McHacks.views;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JLayeredPane;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Title_Screen extends JFrame {
+
+	private JPanel contentPane;
+	public static Title_Screen starting = new Title_Screen();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					starting.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Title_Screen() {
+		setTitle("ViralConnection");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 734, 549);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(null);
+		setContentPane(contentPane);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setForeground(Color.BLACK);
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select Country", "Canada", "China", "South Africa", "United States"}));
+		
+		JLabel lblPleaseSelectA = new JLabel("Please select a country to investigate:");
+		lblPleaseSelectA.setFont(new Font("Century Gothic", Font.PLAIN, 22));
+		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox.getSelectedItem() == "Canada"){
+					Canada.canada_page.setVisible(true);
+					starting.setVisible(false);
+				}
+				
+				if (comboBox.getSelectedItem() == "United States"){
+					USA.USA_page.setVisible(true);
+					starting.setVisible(false);
+				}
+				
+				if (comboBox.getSelectedItem() == "South Africa"){
+					SA.SA_page.setVisible(true);
+					starting.setVisible(false);
+				}
+				
+				if (comboBox.getSelectedItem() == "China"){
+					China.China_page.setVisible(true);
+					starting.setVisible(false);
+				}
+				
+			}
+		});
+		btnSearch.setForeground(Color.WHITE);
+		btnSearch.setBackground(Color.RED);
+		btnSearch.setFont(new Font("Century Gothic", Font.PLAIN, 25));
+		
+		JLabel lblWelcomeToViralconnection = new JLabel("Welcome to ViralConnection!");
+		lblWelcomeToViralconnection.setFont(new Font("Century Gothic", Font.PLAIN, 30));
+		
+		JTextArea txtrTest = new JTextArea();
+		txtrTest.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		txtrTest.setEditable(false);
+		txtrTest.setText("The purpose of this program is to educate individuals around the world on the\r\ndiseases that are present within their country. Without national media coverage,\r\nmany people are not aware of the many diseases in their nation and are\r\nsusceptible to infection. Choose a country below to start investigating the most\r\ncommon diseases in order to stay safe!");
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setForeground(Color.RED);
+		lblLogo.setBackground(Color.RED);
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		Image Logo = new ImageIcon(this.getClass().getResource("/logo_final.PNG")).getImage();
+		Image modifiedLogo = Logo.getScaledInstance(730, 100, java.awt.Image.SCALE_SMOOTH);
+		lblLogo.setIcon(new ImageIcon(modifiedLogo));
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		
+		
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addContainerGap(67, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblPleaseSelectA, GroupLayout.PREFERRED_SIZE, 405, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+										.addGap(18))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(btnSearch)
+										.addGap(251))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGap(252)))
+								.addGap(34))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(lblLogo, GroupLayout.PREFERRED_SIZE, 721, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblWelcomeToViralconnection, GroupLayout.PREFERRED_SIZE, 451, GroupLayout.PREFERRED_SIZE)
+							.addGap(125))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(txtrTest, GroupLayout.PREFERRED_SIZE, 702, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+				
+		));
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblLogo, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblWelcomeToViralconnection, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addGap(28)
+					.addComponent(txtrTest, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPleaseSelectA, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(btnSearch)
+					.addGap(27))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap())
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+}
